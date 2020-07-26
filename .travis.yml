@@ -13,11 +13,8 @@ script:
  
 
 deploy:
-  -
-    on:
-      branch: master
-    provider: bintray
-    skip_cleanup: true
-    file: target/adder-1.0.0.jar
-    user: ahmad-shams
-    key: $BINTRAY_API_KEY
+  provider: bintray
+  skip_cleanup: true
+  file: target/adder-1.0.0.jar
+  user: ahmad-shams
+  key: 1a661413f1492eee3eca7bdd633cc90491f9f1f0
