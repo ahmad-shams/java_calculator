@@ -7,4 +7,3 @@ cache:
  
 script:
   - cd adder; mvn package
-  - bash ls
