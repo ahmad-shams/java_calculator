@@ -5,9 +5,7 @@ cache:
   directories:
   - $HOME/.m2
   
-env:
-- BINTRAY_API_KEY=1a661413f1492eee3eca7bdd633cc90491f9f1f0
- 
+
 script:
   - cd adder; mvn package
  
