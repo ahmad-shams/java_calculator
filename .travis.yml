@@ -12,6 +12,8 @@ jobs:
   include:
     - stage: "Build Java"
       script: cd adder; mvn package
+    - stage: "Build Docker"
+      script: ./build_docker.sh
 
     
 
