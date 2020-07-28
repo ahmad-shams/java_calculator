@@ -16,6 +16,8 @@ jobs:
       - cd adder; mvn package
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - cd ..; docker build -t ahmadshams/cmm:openjdk_test .
+      - docker push ahmadshams/cmm:openjdk_test
+      - docker run -it ahmadshams/cmm:openjdk_test bash -c "java -cp /usr/src/myapp/adder-1.0.0.jar  com.dzone.albanoj2.maven.java.App 21 23"
   
 
     
