@@ -10,7 +10,8 @@ services:
 
 jobs:
   include:
-    - script: cd adder; mvn package
-    - script: build_docker.sh
+    - stage: "Build Java"
+      script: cd adder; mvn package
+    - script: cd ..; build_docker.sh
     
 
