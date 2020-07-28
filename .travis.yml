@@ -8,12 +8,13 @@ cache:
 services:
   - docker  
 
-jobs:
-  include:
-    - stage: "Build Java"
-      script: cd adder; mvn package
-    - stage: "Build Docker"
-      script: ./build_docker.sh
+script: ./build_docker.sh
+
+deploy:
+  - provider: script
+    script: ./build_docker.sh 
+    on:
+      branch: master  
 
     
 
