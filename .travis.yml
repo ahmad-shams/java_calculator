@@ -8,6 +8,9 @@ cache:
 services:
   - docker  
 
-script: build_docker.sh
-
+jobs:
+  include:
+    - script: cd adder; mvn package
+    - script: build_docker.sh
+    
 
