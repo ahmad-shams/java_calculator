@@ -15,7 +15,7 @@ jobs:
       script:
       - cd adder; mvn package
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t ahmadshams/cmm:openjdk_test .
+      - cd ..; docker build -t ahmadshams/cmm:openjdk_test .
   
 
     
