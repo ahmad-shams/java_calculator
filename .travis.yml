@@ -14,11 +14,16 @@ jobs:
   include:
     - stage: Build and Test
       script:
-      - cd adder; mvn package
+      - cd adder
+      - mvn package
     - stage: Deploy to DockerHub
       if: "(branch = master) AND (type = push)"
       install: skip
-      script: cd $HOME; ls; ./build_docker.sh
+      script:
+        - pwd
+        - env
+        - ls 
+        - ./build_docker.sh
     - stage: TEST Docker
       script: 
       - docker run -it $DOCKER_IMAGE bash -c "java -cp /usr/src/myapp/adder-1.0.0.jar  com.dzone.albanoj2.maven.java.App 21 23"
