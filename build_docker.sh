@@ -7,8 +7,8 @@ then
 fi
 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker build -t $IMAGE_NAME .
-docker push $IMAGE_NAME
+docker build -t $DOCKER_IMAGE .
+docker push $DOCKER_IMAGE
 
 
 
