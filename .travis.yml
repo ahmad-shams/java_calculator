@@ -7,17 +7,21 @@ cache:
 
 services:
   - docker  
-
-
+env:
+  - DOCKER_IMAGE=ahmadshams/cmm:openjdk_test
+  
 jobs:
   include:
-    - stage: build docker image
+    - stage: Build and Test
       script:
       - cd adder; mvn package
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - cd ..; docker build -t ahmadshams/cmm:openjdk_test .
-      - docker push ahmadshams/cmm:openjdk_test
-      - docker run -it ahmadshams/cmm:openjdk_test bash -c "java -cp /usr/src/myapp/adder-1.0.0.jar  com.dzone.albanoj2.maven.java.App 21 23"
+    - stage: Deploy to DockerHub
+      if: "(branch = master) AND (type = push)"
+      install: skip
+      script: cd $HOME; build_docker.sh
+    - stage: TEST Docker
+      script: 
+      - docker run -it $DOCKER_IMAGE bash -c "java -cp /usr/src/myapp/adder-1.0.0.jar  com.dzone.albanoj2.maven.java.App 21 23"
   
 
     
