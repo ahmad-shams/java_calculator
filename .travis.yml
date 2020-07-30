@@ -14,7 +14,7 @@ jobs:
   include:
     - stage: Build and Test
       script:
-      - cd adder
+      - cd $TRAVIS_BUILD_DIR/adder
       - mvn package
     - stage: Deploy to DockerHub
       if: "(branch = master) AND (type = push)"
