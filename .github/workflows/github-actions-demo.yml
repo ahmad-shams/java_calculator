@@ -39,6 +39,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          image: ahmadshams/java_test
+          # image: ahmadshams/java_test
           push: true
-          tags: user/app:latest
+          tags: ahmadshams/java_test:latest
